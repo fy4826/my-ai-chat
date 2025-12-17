@@ -1,0 +1,44 @@
+# =========================
+# 全局通用 (Global)
+# =========================
+node_modules/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# =========================
+# 环境变量 (最重要！！！)
+# =========================
+# 忽略所有 .env 文件，防止密钥泄露
+.env
+.env.*
+!.env.example 
+# (上面一行意思是：如果有 .env.example 模版文件，可以上传)
+
+# =========================
+# 构建产物 (Build Outputs)
+# =========================
+# 涵盖所有常见的构建目录名
+dist/
+build/
+out/
+coverage/
+
+# =========================
+# Rsbuild / Vite 特定
+# =========================
+.rsbuild/
+stats.json
+
+# =========================
+# TypeScript
+# =========================
+*.tsbuildinfo
