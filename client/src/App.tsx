@@ -1,8 +1,9 @@
 import './App.css';
-import { useChat } from './hooks/useChat';
+import { Bot, Send, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Send, User, Bot } from 'lucide-react';
+import { useChat } from './hooks/useChat';
+
 const App = () => {
   const { messages, input, isLoading, setInput, sendMessage } = useChat();
 
@@ -17,18 +18,33 @@ const App = () => {
           <div className="text-center text-gray-400 mt-20">开始新的对话...</div>
         )}
 
-        {messages.map((msg, index) => (
-          <div key={index} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-blue-500 text-white' : 'bg-green-500 text-white'
-              }`}>
+        {messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
+          >
+            <div
+              className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
+                msg.role === 'user'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-green-500 text-white'
+              }`}
+            >
               {msg.role === 'user' ? <User size={20} /> : <Bot size={20} />}
             </div>
-            <div className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 markdown-body'
-              }`}>
+            <div
+              className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed shadow-sm ${
+                msg.role === 'user'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white border border-gray-200 markdown-body'
+              }`}
+            >
               {msg.role === 'user' ? (
                 <div className="whitespace-pre-wrap">{msg.content}</div>
               ) : (
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {msg.content}
+                </ReactMarkdown>
               )}
             </div>
           </div>
@@ -47,6 +63,7 @@ const App = () => {
             disabled={isLoading}
           />
           <button
+            type="button"
             onClick={sendMessage}
             disabled={isLoading || !input.trim()}
             className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 disabled:opacity-50"
