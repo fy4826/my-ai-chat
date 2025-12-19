@@ -7,10 +7,21 @@
     "build": "pnpm -r run build",
     "lint": "pnpm -r run --if-present lint ",
     "test": "pnpm -r run --if-present test ",
-    "type-check": "pnpm -r run --if-present type-check "
+    "type-check": "pnpm -r run --if-present type-check ",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.7.0"
+  "packageManager": "pnpm@10.7.0",
+  "devDependencies": {
+    "@biomejs/biome": "2.3.9",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json}": [
+      "biome check --write --no-errors-on-unmatched"
+    ]
+  }
 }
