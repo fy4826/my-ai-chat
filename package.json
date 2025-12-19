@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint --if-present",
+    "test": "pnpm -r run test --if-present",
+    "type-check": "pnpm -r run type-check --if-present"
   },
   "keywords": [],
   "author": "",

@@ -10,7 +10,10 @@
     "format": "biome format --write",
     "preview": "rsbuild preview",
     "test": "rstest",
-    "test:watch": "rstest --watch"
+    "test:watch": "rstest --watch",
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@my-ai-chat/shared": "workspace:^",
