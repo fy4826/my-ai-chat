@@ -13,6 +13,7 @@ pnpm-debug.log*
 Thumbs.db
 .idea/
 .vscode/
+.trae/
 
 # =========================
 # 环境变量 (最重要！！！)
