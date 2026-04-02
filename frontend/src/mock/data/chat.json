@@ -1,0 +1,536 @@
+{
+  "sessions": [
+    {
+      "id": "1",
+      "title": "关于项目的讨论",
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "title": "技术问题咨询",
+      "createdAt": "2024-01-19T15:00:00Z",
+      "updatedAt": "2024-01-19T15:45:00Z"
+    }
+  ],
+  "chatResponse": {
+    "id": "1",
+    "content": "这是一个模拟的聊天响应",
+    "thinking": "让我思考一下这个问题...",
+    "model": "qwen3",
+    "createdAt": "2024-01-20T10:00:00Z"
+  },
+  "streamEvents": [
+    {
+      "type": "reasoning",
+      "text": "让我思考一下这个问题..."
+    },
+    {
+      "type": "reasoning",
+      "text": "首先，我需要理解用户的需求..."
+    },
+    {
+      "type": "content",
+      "text": "以下"
+    },
+    {
+      "type": "content",
+      "text": "是前端常用的**防抖（Debounce）与"
+    },
+    {
+      "type": "content",
+      "text": "节流（Throttle）**完整可复用代码，"
+    },
+    {
+      "type": "content",
+      "text": "含基础版、增强版及使用示例，直接复制"
+    },
+    {
+      "type": "content",
+      "text": "即可使用"
+    },
+    {
+      "type": "content",
+      "text": "。\n\n### 一、"
+    },
+    {
+      "type": "content",
+      "text": "防抖（Debounce）\n核心：高频触发"
+    },
+    {
+      "type": "content",
+      "text": "时，仅在最后一次触发后延迟执行"
+    },
+    {
+      "type": "content",
+      "text": "，期间重复触发会重置"
+    },
+    {
+      "type": "content",
+      "text": "计时器。\n适用："
+    },
+    {
+      "type": "content",
+      "text": "搜索框输入、窗口resize"
+    },
+    {
+      "type": "content",
+      "text": "、表单验证等"
+    },
+    {
+      "type": "content",
+      "text": "。\n\n#### 1."
+    },
+    {
+      "type": "content",
+      "text": " 基础版（立即执行/延迟执行）\n```javascript\n/**\n * "
+    },
+    {
+      "type": "content",
+      "text": "防抖函数\n * @param"
+    },
+    {
+      "type": "content",
+      "text": " {Function} fn - 目标函数\n * @param"
+    },
+    {
+      "type": "content",
+      "text": " {number} delay - "
+    },
+    {
+      "type": "content",
+      "text": "延迟时间(ms)，默认300\n *"
+    },
+    {
+      "type": "content",
+      "text": " @param {boolean} immediate - 是否立即执行，默认"
+    },
+    {
+      "type": "content",
+      "text": "false\n * @returns {"
+    },
+    {
+      "type": "content",
+      "text": "Function} 防抖后的函数"
+    },
+    {
+      "type": "content",
+      "text": "\n */\nfunction debounce(fn, delay = 3"
+    },
+    {
+      "type": "content",
+      "text": "00, immediate = false) {\n  let timer"
+    },
+    {
+      "type": "content",
+      "text": " = null;\n  return"
+    },
+    {
+      "type": "content",
+      "text": " function (...args) {\n    const context = this;"
+    },
+    {
+      "type": "content",
+      "text": "\n    // 清除旧定时器\n    if (timer"
+    },
+    {
+      "type": "content",
+      "text": ") clearTimeout(timer);\n    // 立即执行"
+    },
+    {
+      "type": "content",
+      "text": "逻辑\n    if (im"
+    },
+    {
+      "type": "content",
+      "text": "mediate && !timer) {\n      fn.apply(context,"
+    },
+    {
+      "type": "content",
+      "text": " args);\n    }\n    // 延迟执行逻辑"
+    },
+    {
+      "type": "content",
+      "text": "\n    timer = setTimeout(() => {\n      if (!"
+    },
+    {
+      "type": "content",
+      "text": "immediate) fn.apply(context, args);\n      timer"
+    },
+    {
+      "type": "content",
+      "text": " = null;\n    },"
+    },
+    {
+      "type": "content",
+      "text": " delay);\n  };\n}\n```\n\n#### "
+    },
+    {
+      "type": "content",
+      "text": "2. 增强版（支持取消）\n```javascript"
+    },
+    {
+      "type": "content",
+      "text": "\nfunction debounceEnhance"
+    },
+    {
+      "type": "content",
+      "text": "(fn, delay = 300, immediate = false"
+    },
+    {
+      "type": "content",
+      "text": ") {\n  let timer = null;\n  const"
+    },
+    {
+      "type": "content",
+      "text": " debounced = function (...args"
+    },
+    {
+      "type": "content",
+      "text": ") {\n    const context = this;\n    if"
+    },
+    {
+      "type": "content",
+      "text": " (timer) clearTimeout(timer);\n    if ("
+    },
+    {
+      "type": "content",
+      "text": "immediate && !timer) fn.apply(context, args);"
+    },
+    {
+      "type": "content",
+      "text": "\n    timer = setTimeout(() => {\n      if (!"
+    },
+    {
+      "type": "content",
+      "text": "immediate) fn.apply(context, args);\n      timer"
+    },
+    {
+      "type": "content",
+      "text": " = null;\n    }, delay);\n  };\n"
+    },
+    {
+      "type": "content",
+      "text": "  // 取消防抖"
+    },
+    {
+      "type": "content",
+      "text": "\n  debounced.cancel ="
+    },
+    {
+      "type": "content",
+      "text": " () => {\n    clear"
+    },
+    {
+      "type": "content",
+      "text": "Timeout(timer);\n   "
+    },
+    {
+      "type": "content",
+      "text": " timer = null;\n  };\n  return debounced;\n}\n```\n\n"
+    },
+    {
+      "type": "content",
+      "text": "#### 防抖使用示例\n```javascript\n// 搜索"
+    },
+    {
+      "type": "content",
+      "text": "框防抖：停止输入5"
+    },
+    {
+      "type": "content",
+      "text": "00ms后执行\n"
+    },
+    {
+      "type": "content",
+      "text": "const searchHandler = debounce((value) => {\n"
+    },
+    {
+      "type": "content",
+      "text": "  console.log('搜索:',"
+    },
+    {
+      "type": "content",
+      "text": " value);\n  // "
+    },
+    {
+      "type": "content",
+      "text": "调用搜索接口\n}, 500);\n\n//"
+    },
+    {
+      "type": "content",
+      "text": " 绑定输入事件\ndocument"
+    },
+    {
+      "type": "content",
+      "text": ".getElementById('searchInput').addEventListener('input', (e"
+    },
+    {
+      "type": "content",
+      "text": ") => {\n  searchHandler(e.target.value);\n"
+    },
+    {
+      "type": "content",
+      "text": "});\n```\n\n---\n\n"
+    },
+    {
+      "type": "content",
+      "text": "### 二、节流（Throttle）\n核心：高频触发时"
+    },
+    {
+      "type": "content",
+      "text": "，**固定时间间隔内"
+    },
+    {
+      "type": "content",
+      "text": "最多执行一次**"
+    },
+    {
+      "type": "content",
+      "text": "。\n适用：滚动监听、鼠标移动、"
+    },
+    {
+      "type": "content",
+      "text": "按钮防重复点击等。\n\n#### 1."
+    },
+    {
+      "type": "content",
+      "text": " 时间戳版（立即执行，无尾部补偿）"
+    },
+    {
+      "type": "content",
+      "text": "\n```javascript\n/**\n * 节流函数（时间"
+    },
+    {
+      "type": "content",
+      "text": "戳版）\n * @param {Function} fn -"
+    },
+    {
+      "type": "content",
+      "text": " 目标函数\n * @param {number} interval -"
+    },
+    {
+      "type": "content",
+      "text": " 执行间隔(ms)，默认300\n"
+    },
+    {
+      "type": "content",
+      "text": " * @returns {Function} 节流后的函数\n */"
+    },
+    {
+      "type": "content",
+      "text": "\nfunction throttle(fn, interval = 300)"
+    },
+    {
+      "type": "content",
+      "text": " {\n  let lastTime = 0;\n "
+    },
+    {
+      "type": "content",
+      "text": " return function (...args) {\n    const now = Date"
+    },
+    {
+      "type": "content",
+      "text": ".now();\n    const context = this;\n    //"
+    },
+    {
+      "type": "content",
+      "text": " 间隔超过设定值则"
+    },
+    {
+      "type": "content",
+      "text": "执行\n    if (now - lastTime >= interval)"
+    },
+    {
+      "type": "content",
+      "text": " {\n      fn.apply(context, args);\n      last"
+    },
+    {
+      "type": "content",
+      "text": "Time = now;\n    }\n  };\n}"
+    },
+    {
+      "type": "content",
+      "text": "\n```\n\n#### 2. 定时器版（延迟"
+    },
+    {
+      "type": "content",
+      "text": "执行，有尾部补偿）\n```javascript\nfunction throttle"
+    },
+    {
+      "type": "content",
+      "text": "Timer(fn, interval = 300) {\n"
+    },
+    {
+      "type": "content",
+      "text": "  let timer = null;\n  return function (...args"
+    },
+    {
+      "type": "content",
+      "text": ") {\n    const context = this;\n    if"
+    },
+    {
+      "type": "content",
+      "text": " (!timer) {\n     "
+    },
+    {
+      "type": "content",
+      "text": " timer = setTimeout(() => {\n        fn.apply(context, args);\n        timer = null;\n      }, interval"
+    },
+    {
+      "type": "content",
+      "text": ");\n    }\n  };\n}\n```\n\n"
+    },
+    {
+      "type": "content",
+      "text": "#### 3. 增强版（支持leading/tra"
+    },
+    {
+      "type": "content",
+      "text": "iling配置）\n```javascript\nfunction throttleEnhance(fn"
+    },
+    {
+      "type": "content",
+      "text": ", interval, options = { leading: true, trailing:"
+    },
+    {
+      "type": "content",
+      "text": " true }) {\n  let lastTime = 0;"
+    },
+    {
+      "type": "content",
+      "text": "\n  let timer = null;\n  return function (..."
+    },
+    {
+      "type": "content",
+      "text": "args) {\n    const context = this;\n   "
+    },
+    {
+      "type": "content",
+      "text": " const now = Date.now();\n    // 不立即"
+    },
+    {
+      "type": "content",
+      "text": "执行时，初始化lastTime\n    if (!lastTime"
+    },
+    {
+      "type": "content",
+      "text": " && options.leading === false) lastTime = now;"
+    },
+    {
+      "type": "content",
+      "text": "\n    const remaining = interval - (now - lastTime"
+    },
+    {
+      "type": "content",
+      "text": ");\n    // 间隔已满，执行函数\n   "
+    },
+    {
+      "type": "content",
+      "text": " if (remaining "
+    },
+    {
+      "type": "content",
+      "text": "<= 0) {\n      if ("
+    },
+    {
+      "type": "content",
+      "text": "timer) {\n        clearTimeout(timer);\n       "
+    },
+    {
+      "type": "content",
+      "text": " timer = null;\n      }\n      fn.apply(context"
+    },
+    {
+      "type": "content",
+      "text": ", args);\n      lastTime = now;\n   "
+    },
+    {
+      "type": "content",
+      "text": " } \n    // 允许尾部执行，且无定时器"
+    },
+    {
+      "type": "content",
+      "text": "时，创建定时器\n    else if (!timer && options"
+    },
+    {
+      "type": "content",
+      "text": ".trailing !== false) {\n      timer = setTimeout"
+    },
+    {
+      "type": "content",
+      "text": "(() => {\n        fn.apply(context, args);\n        lastTime = options."
+    },
+    {
+      "type": "content",
+      "text": "leading === false ? 0 : Date.now();\n       "
+    },
+    {
+      "type": "content",
+      "text": " timer = null;\n      }, remaining);\n    }"
+    },
+    {
+      "type": "content",
+      "text": "\n  }\n  }\n}\n```\n#### 4.节流使用示例\n```javascript\n// 滚动节流：每1000ms执行一次\nconst scrollHandler = throttle(() => {\n  console.log('滚动位置:', window.scrollY);\n}, 1000);\nwindow.addEventListener('scroll', scrollHandler);\n\n// 按钮点击节流：2s内仅执行一次\nconst clickHandler = throttle(() => {\n  console.log('按钮点击');\n}, 2000);\ndocument.getElementById('submitBtn').addEventListener('click', clickHandler);\n```\n\n---\n\n"
+    },
+    {
+      "type": "content",
+      "text": "### 三、核心区别对比\n| 特性 |"
+    },
+    {
+      "type": "content",
+      "text": " 防抖（Debounce） | 节流（Thro"
+    },
+    {
+      "type": "content",
+      "text": "ttle） |\n| :--- | :--- | :"
+    },
+    {
+      "type": "content",
+      "text": "--- |\n| 执行时机 | 最后一次触发"
+    },
+    {
+      "type": "content",
+      "text": "后延迟执行 | 固定间隔内最多执行一次 |"
+    },
+    {
+      "type": "content",
+      "text": "\n| 触发频率 | 高频率触发→仅"
+    },
+    {
+      "type": "content",
+      "text": "最后一次生效 | 高频率触发→按固定节奏"
+    },
+    {
+      "type": "content",
+      "text": "执行 |\n| 典型场景 | 搜索输入、"
+    },
+    {
+      "type": "content",
+      "text": "窗口resize | 滚动监听、鼠标移动、按钮防"
+    },
+    {
+      "type": "content",
+      "text": "重 |\n\n需要我把"
+    },
+    {
+      "type": "content",
+      "text": "这些代码封装成可直接"
+    },
+    {
+      "type": "content",
+      "text": "引入的工具函数，并补充"
+    },
+    {
+      "type": "content",
+      "text": "Vue/React中的使用示例吗？"
+    },
+    {
+      "type": "done",
+      "text": ""
+    }
+  ],
+  "errorResponse": {
+    "error": "模拟错误：API 调用失败"
+  }
+}

@@ -1,0 +1,268 @@
+data：{text: "以下"
+}
+data：{text: "是前端常用的**防抖（Debounce）与"
+}
+data：{text: "节流（Throttle）**完整可复用代码，"
+}
+data：{text: "含基础版、增强版及使用示例，直接复制"
+}
+data：{text: "即可使用"
+}
+data：{text: "。\\n\\n### 一、"
+}
+data：{text: "防抖（Debounce）\\n核心：高频触发"
+}
+data：{text: "时，仅在最后一次触发后延迟执行"
+}
+data：{text: "，期间重复触发会重置"
+}
+data：{text: "计时器。\\n适用："
+}
+data：{text: "搜索框输入、窗口resize"
+}
+data：{text: "、表单验证等"
+}
+data：{text: "。\\n\\n#### 1."
+}
+data：{text: " 基础版（立即执行/延迟执行）\\n```"
+}
+data：{text: "javascript\\n/**\\n * "
+}
+data：{text: "防抖函数\\n * @param"
+}
+data：{text: " {Function} fn - 目标函数\\n * @param"
+}
+data：{text: " {number} delay - "
+}
+data：{text: "延迟时间(ms)，默认300\\n *"
+}
+data：{text: " @param {boolean} immediate - 是否立即执行，默认"
+}
+data：{text: "false\\n * @returns {"
+}
+data：{text: "Function} 防抖后的函数"
+}
+data：{text: "\\n */\\nfunction debounce(fn, delay = 3"
+}
+data：{text: "00, immediate = false) {\\n  let timer"
+}
+data：{text: " = null;\\n  return"
+}
+data：{text: " function (...args) {\\n    const context = this;"
+}
+data：{text: "\\n    // 清除旧定时器\\n    if (timer"
+}
+data：{text: ") clearTimeout(timer);\\n    // 立即执行"
+}
+data：{text: "逻辑\\n    if (im"
+}
+data：{text: "mediate && !timer) {\\n      fn.apply(context,"
+}
+data：{text: " args);\\n    }\\n    // 延迟执行逻辑"
+}
+data：{text: "\\n    timer = setTimeout(() => {\\n      if (!"
+}
+data：{text: "immediate) fn.apply(context, args);\\n      timer"
+}
+data：{text: " = null;\\n    },"
+}
+data：{text: " delay);\\n  };\\n}\\n```\\n\\n#### "
+}
+data：{text: "2. 增强版（支持取消）\\n```javascript"
+}
+data：{text: "\\nfunction debounceEnhance"
+}
+data：{text: "(fn, delay = 300, immediate = false"
+}
+data：{text: ") {\\n  let timer = null;\\n  const"
+}
+data：{text: " debounced = function (...args"
+}
+data：{text: ") {\\n    const context = this;\\n    if"
+}
+data：{text: " (timer) clearTimeout(timer);\\n    if ("
+}
+data：{text: "immediate && !timer) fn.apply(context, args);"
+}
+data：{text: "\\n    timer = setTimeout(() => {\\n      if (!"
+}
+data：{text: "immediate) fn.apply(context, args);\\n      timer"
+}
+data：{text: " = null;\\n    }, delay);\\n  };\\n"
+}
+data：{text: "  // 取消防抖"
+}
+data：{text: "\\n  debounced.cancel ="
+}
+data：{text: " () => {\\n    clear"
+}
+data：{text: "Timeout(timer);\\n   "
+}
+data：{text: " timer = null;\\n  };\\n  return debounced;\\n}\\n```\\n\\n"
+}
+data：{text: "#### 防抖使用示例\\n```javascript\\n// 搜索"
+}
+data：{text: "框防抖：停止输入5"
+}
+data：{text: "00ms后执行\\n"
+}
+data：{text: "const searchHandler = debounce((value) => {\\n"
+}
+data：{text: "  console.log('搜索:',"
+}
+data：{text: " value);\\n  // "
+}
+data：{text: "调用搜索接口\\n}, 500);\\n\\n//"
+}
+data：{text: " 绑定输入事件\\ndocument"
+}
+data：{text: ".getElementById('searchInput').addEventListener('input', (e"
+}
+data：{text: ") => {\\n  searchHandler(e.target.value);\\n"
+}
+data：{text: "});\\n```\\n\\n---\\n\\n"
+}
+data：{text: "### 二、节流（Throttle）\\n核心：高频触发时"
+}
+data：{text: "，**固定时间间隔内"
+}
+data：{text: "最多执行一次**"
+}
+data：{text: "。\\n适用：滚动监听、鼠标移动、"
+}
+data：{text: "按钮防重复点击等。\\n\\n#### 1."
+}
+data：{text: " 时间戳版（立即执行，无尾部补偿）"
+}
+data：{text: "\\n```javascript\\n/**\\n * 节流函数（时间"
+}
+data：{text: "戳版）\\n * @param {Function} fn -"
+}
+data：{text: " 目标函数\\n * @param {number} interval -"
+}
+data：{text: " 执行间隔(ms)，默认300\\n"
+}
+data：{text: " * @returns {Function} 节流后的函数\\n */"
+}
+data：{text: "\\nfunction throttle(fn, interval = 300)"
+}
+data：{text: " {\\n  let lastTime = 0;\\n "
+}
+data：{text: " return function (...args) {\\n    const now = Date"
+}
+data：{text: ".now();\\n    const context = this;\\n    //"
+}
+data：{text: " 间隔超过设定值则"
+}
+data：{text: "执行\\n    if (now - lastTime >= interval)"
+}
+data：{text: " {\\n      fn.apply(context, args);\\n      last"
+}
+data：{text: "Time = now;\\n    }\\n  };\\n}"
+}
+data：{text: "\\n```\\n\\n#### 2. 定时器版（延迟"
+}
+data：{text: "执行，有尾部补偿）\\n```javascript\\nfunction throttle"
+}
+data：{text: "Timer(fn, interval = 300) {\\n"
+}
+data：{text: "  let timer = null;\\n  return function (...args"
+}
+data：{text: ") {\\n    const context = this;\\n    if"
+}
+data：{text: " (!timer) {\\n     "
+}
+data：{text: " timer = setTimeout(() => {\\n        fn.apply(context, args);\\n        timer = null;\\n      }, interval"
+}
+data：{text: ");\\n    }\\n  };\\n}\\n```\\n\\n"
+}
+data：{text: "#### 3. 增强版（支持leading/tra"
+}
+data：{text: "iling配置）\\n```javascript\\nfunction throttleEnhance(fn"
+}
+data：{text: ", interval, options = { leading: true, trailing:"
+}
+data：{text: " true }) {\\n  let lastTime = 0;"
+}
+data：{text: "\\n  let timer = null;\\n  return function (..."
+}
+data：{text: "args) {\\n    const context = this;\\n   "
+}
+data：{text: " const now = Date.now();\\n    // 不立即"
+}
+data：{text: "执行时，初始化lastTime\\n    if (!lastTime"
+}
+data：{text: " && options.leading === false) lastTime = now;"
+}
+data：{text: "\\n    const remaining = interval - (now - lastTime"
+}
+data：{text: ");\\n    // 间隔已满，执行函数\\n   "
+}
+data：{text: " if (remaining "
+}
+data：{text: "<= 0) {\\n      if ("
+}
+data：{text: "timer) {\\n        clearTimeout(timer);\\n       "
+}
+data：{text: " timer = null;\\n      }\\n      fn.apply(context"
+}
+data：{text: ", args);\\n      lastTime = now;\\n   "
+}
+data：{text: " } \\n    // 允许尾部执行，且无定时器"
+}
+data：{text: "时，创建定时器\\n    else if (!timer && options"
+}
+data：{text: ".trailing !== false) {\\n      timer = setTimeout"
+}
+data：{text: "(() => {\\n        fn.apply(context, args);\\n        lastTime = options."
+}
+data：{text: "leading === false ? 0 : Date.now();\\n       "
+}
+data：{text: " timer = null;\\n      }, remaining);\\n    }"
+}
+data：{text: "\\n  };\\n}\\n\\n\\n#### 节流使用示例\\njavascript\\n//"
+}
+data：{text: " 滚动节流：每1000ms执行一次\\n"
+}
+data：{text: "const scrollHandler = throttle(() => {\\n  console"
+}
+data：{text: ".log('滚动位置:', window.scrollY);\\n}, "
+}
+data：{text: "1000);\\nwindow.addEventListener('scroll', scroll"
+}
+data：{text: "Handler);\\n\\n// 按钮点击节流：2s内"
+}
+data：{text: "仅执行一次\\nconst clickHandler = throttle(() => {"
+}
+data：{text: "\\n  console.log('按钮点击');\\n}, 2"
+}
+data：{text: "000);\\ndocument.getElementById('submitBtn').add"
+}
+data：{text: "EventListener('click', clickHandler);\\n```\\n\\n---\\n\\n"
+}
+data：{text: "### 三、核心区别对比\\n| 特性 |"
+}
+data：{text: " 防抖（Debounce） | 节流（Thro"
+}
+data：{text: "ttle） |\\n| :--- | :--- | :"
+}
+data：{text: "--- |\\n| 执行时机 | 最后一次触发"
+}
+data：{text: "后延迟执行 | 固定间隔内最多执行一次 |"
+}
+data：{text: "\\n| 触发频率 | 高频率触发→仅"
+}
+data：{text: "最后一次生效 | 高频率触发→按固定节奏"
+}
+data：{text: "执行 |\\n| 典型场景 | 搜索输入、"
+}
+data：{text: "窗口resize | 滚动监听、鼠标移动、按钮防"
+}
+data：{text: "重 |\\n\\n需要我把"
+}
+data：{text: "这些代码封装成可直接"
+}
+data：{text: "引入的工具函数，并补充"
+}
+data：{text: "Vue/React中的使用示例吗？"
+}

@@ -1,0 +1,150 @@
+.code-block-container {
+    margin: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.code-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #3e3e42;
+}
+
+.code-block-language-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.code-block-language {
+    font-size: 12px;
+    font-weight: 500;
+    color: #cccccc;
+    text-transform: capitalize;
+}
+
+.code-block-toggle {
+    background: transparent;
+    border: none;
+    color: #cccccc;
+    cursor: pointer;
+    font-size: 10px;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.code-block-toggle:hover {
+    color: #ffffff;
+}
+
+.code-block-toggle.collapsed {
+    transform: rotate(-180deg);
+}
+
+.code-block-copy {
+    font-size: 12px;
+    padding: 4px 8px;
+    background-color: #3e3e42;
+    color: #cccccc;
+    border: 1px solid #4e4e4e;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.code-block-copy:hover {
+    background-color: #4e4e4e;
+    color: #ffffff;
+}
+
+.code-block-copy:active {
+    transform: scale(0.98);
+}
+
+pre {
+    margin: 0;
+    padding: 12px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.4;
+    max-height: 500px;
+    transition: max-height 0.3s ease;
+}
+
+pre.collapsed {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+/* 移除代码块周围的空白 */
+.prose pre {
+    margin: 0 !important;
+}
+
+.prose p {
+    margin: 0;
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+table th,
+table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+}
+
+table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #111827;
+}
+
+table tr:nth-child(even) {
+  background-color: #f3f4f6;
+}
+
+table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* 深色主题下的表格样式 */
+.dark table th {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+.dark table td {
+  border-color: #374151;
+}
+
+.dark table tr:nth-child(even) {
+  background-color: #111827;
+}
+
+.dark table tr:hover {
+  background-color: #1f2937;
+}
