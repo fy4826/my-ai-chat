@@ -1,0 +1,91 @@
+.scroll-to-bottom-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 1000;
+    transition:
+        opacity 0.3s,
+        transform 0.3s;
+    pointer-events: auto;
+}
+
+.scroll-to-bottom-container.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    pointer-events: none;
+}
+
+.scroll-to-bottom-container.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.button-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+}
+
+.button-container:hover {
+    transform: scale(1.1);
+}
+
+.button-container::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #004cff 0deg,
+        #ffffff 20deg,
+        #ffffff 180deg,
+        #ffffff 340deg,
+        #004cff 360deg
+    );
+    filter: blur(4px);
+    animation: flow 3s linear infinite;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform-origin: center center;
+}
+
+.button-container.loading::before {
+    opacity: 1;
+}
+
+.scroll-button {
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 1;
+    margin: 2px;
+}
+
+.scroll-button:hover {
+    background-color: #f5f5f5;
+}
+
+.arrow-icon {
+    transition: color 0.3s;
+}
+
+@keyframes flow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
